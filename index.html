@@ -11,7 +11,9 @@
   <link rel="stylesheet" href="css/AdminLTE.min.css">
   <!--主体的主题颜色-->
   <link rel="stylesheet" href="css/_all-skins.min.css">
-
+  <!--弹窗-->
+  <link rel="stylesheet" href="css/common.css"/>
+  
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -30,12 +32,12 @@
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="" class="user-image" alt="User Image">
+              <img src="images/flag.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">imsadan</span>
             </a>
             <ul class="dropdown-menu">
               <li class="user-header">
-                <img src="" class="img-circle" alt="User Image">
+                <img src="images/flag.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   imsadan - Java
@@ -44,10 +46,10 @@
               </li>
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat bounceIn" id="editUser">编辑</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="#" class="btn btn-default btn-flat">注销</a>
                 </div>
               </li>
             </ul>
@@ -188,7 +190,7 @@
             <div class="inner">
               <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-              <p>Bounce Rate</p>
+              <p>统计</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -199,9 +201,9 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3>4</h3>
 
-              <p>User Registrations</p>
+              <p>人次</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
@@ -214,10 +216,10 @@
             <div class="inner">
               <h3>65</h3>
 
-              <p>Unique Visitors</p>
+              <p>评估</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="fa fa-tags"></i>
             </div>
             <a href="#" class="small-box-footer">更多<i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -241,7 +243,21 @@
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/adminlte.min.js"></script>
-
-
+<!--弹窗js效果-->
+<script src="js/tabwind.js"></script>
+<div class="box">
+<!-- 	<div class="demo">
+		<a href="javascript:;" class="bounceIn">DEMO1</a>
+	</div> -->
+	
+	<div id="dialogBg"></div>
+	<div id="dialog" class="animated">
+		<img class="dialogIco" width="50" height="50" src="images/ico.png" alt="" />
+		<div class="dialogTop">
+			<a href="javascript:;" class="claseDialogBtn">关闭</a>
+		</div>
+		<!--不同需求 -->
+	</div>
+</div>
 </body>
 </html>
