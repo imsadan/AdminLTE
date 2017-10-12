@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="css/_all-skins.min.css">
   <!--弹窗-->
   <link rel="stylesheet" href="css/common.css"/>
+  <!--上传图片-->
+  <link href="css/bootstrap-fileinput.css" rel="stylesheet">
   
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -245,11 +247,8 @@
 <script src="js/adminlte.min.js"></script>
 <!--弹窗js效果-->
 <script src="js/tabwind.js"></script>
-<div class="box">
-<!-- 	<div class="demo">
-		<a href="javascript:;" class="bounceIn">DEMO1</a>
-	</div> -->
-	
+<script src="js/bootstrap-fileinput.js"></script>
+<div class="box">	
 	<div id="dialogBg"></div>
 	<div id="dialog" class="animated">
 		<img class="dialogIco" width="50" height="50" src="images/ico.png" alt="" />
@@ -257,7 +256,108 @@
 			<a href="javascript:;" class="claseDialogBtn">关闭</a>
 		</div>
 		<!--不同需求 -->
+		  <form style="margin-top:20px;" id="personEditForm" class="itemForm" method="post">
+		    <p id="wind_txt2">确认是否修改个人登录账号？</p>
+		    <table style="margin:10px auto;">
+			  <tr>
+				<td>
+                 <p id="wind_txt">用户名:<input type="text" name="username" /></p>
+				</td>
+			  </tr>
+			  <tr>
+				<td>
+                 <p id="wind_txt">重置密码:<input type="password" name="password" /></p>
+				</td>
+			  </tr>
+              <tr>			  
+                <td>
+					<form>
+						<div class="form-group" id="uploadForm" enctype='multipart/form-data'>
+							<div class="fileinput fileinput-new" data-provides="fileinput"  id="exampleInputUpload">
+								<div class="fileinput-new thumbnail" style="width: 200px;height: auto;max-height:150px;">
+									<img id='picImg' style="width: 100%;height: auto;max-height: 140px;" src="images/flag.jpg" alt="" />
+								</div>
+								<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+								<div>
+									<span class="btn btn-primary btn-file">
+										<span class="fileinput-new">选择文件</span>
+										<span class="fileinput-exists">换一张</span>
+										<input type="file" name="image" id="picID" accept="image/gif,image/jpeg,image/x-png"/>
+									</span>
+									<a href="javascript:;" class="btn btn-warning fileinput-exists" data-dismiss="fileinput">移除</a>
+								</div>
+							</div>
+						</div>
+						<button type="button" id="uploadSubmit" class="btn btn-info">上传</button>
+					</form>
+				</td>				
+			  </tr>		  			               
+			</table>
+		  </form>
+
+		<button type="button" class="btn btn-default btn-sm" style="width:200px;height:50px;" id="mailsubmit" onclick="submitForm()">更新</button>
+
 	</div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        //上传图片
+        $('#uploadSubmit').click(function () {
+            var data = new FormData($('#uploadForm')[0]);
+            $.ajax({
+                url: 'xxx/xxx',
+                type: 'POST',
+                data: data,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    console.log(data);
+                    if(data.status){
+                        console.log('upload success');
+                    }else{
+                        console.log(data.message);
+                    }
+                },
+                error: function (data) {
+                    console.log(data.status);
+                }
+            });
+        });
+
+    })
+	
+	//更新按钮
+	function submitForm(){
+		//有效性验证
+		if(!$('#personEditForm').form('validate')){
+			$.messager.alert('提示','表单还未填写完成!');
+			return ;
+		}
+		
+       /* var user={
+				id:$("#uid").val(),
+				image:$("#uimage").val(),
+				newtext:$("#utext").val(),
+				newname:$("#uname").val(),
+				maintext:$("iframe").contents().find("body").html()
+		}; */
+			
+		$.ajax({
+			type:'post',
+            url:'xxx/xxx',
+			data:user,
+			success:function(data){
+				if(data.status==200){
+					$.messager.alert('提示','修改信息完成!',undefined,function(){
+	        			window.location.href="";
+	        		 });
+				}
+			}
+		});
+		
+	}
+</script>
 </body>
 </html>
