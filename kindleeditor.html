@@ -1,0 +1,28 @@
+<html>
+<head>
+<script src="js/jquery.min.js"></script>
+<script charset="utf-8" src="js/kindeditor/kindeditor.js"></script>  
+<script charset="utf-8" src="js/kindeditor/lang/zh_CN.js"></script>  
+<script charset="utf-8" src="js/kindleditor.js"></script> 
+</head>
+<body>
+<form id="newsAddForm" class="itemForm" method="post">
+	<textarea id="editor_id" name="content" style="width:700px;height:300px;">  
+		这里输入内容...  
+	</textarea> 
+</form>
+</body>
+<script>
+    var newsAddEditor ;
+	//页面初始化完毕后执行此方法
+	$(function(){
+		//创建富文本编辑器
+		newsAddEditor = TT.createEditor("#newsAddForm [name=content]");
+
+	});
+	
+	//实际表单中的文本
+	<!-- content:$("iframe").contents().find("body").html(); -->
+	 
+</script>
+</html>
